@@ -35,6 +35,25 @@ for (const width of [320, 390, 768, 1024, 1440, 1920]) {
         return { slanted, weakHeadings }
       })
       expect(typographyIssues, route).toEqual({ slanted: [], weakHeadings: [] })
+      const marginIssues = await page.evaluate(() => {
+        const contentEdges = element => {
+          const bounds = element.getBoundingClientRect()
+          const style = getComputedStyle(element)
+          return [bounds.left + parseFloat(style.paddingLeft), bounds.right - parseFloat(style.paddingRight)]
+        }
+        const expected = contentEdges(document.querySelector('.footer-grid'))
+        const shells = [...document.querySelectorAll('.container, .header-inner, .hero-bottom')]
+        const issues = shells.filter(element => contentEdges(element).some((edge, i) => Math.abs(edge - expected[i]) > 1))
+          .map(element => element.className)
+        for (const selector of ['.hero-project', '.cta-content', '.article-header', '.article-body', '.about-primary']) {
+          const element = document.querySelector(selector)
+          if (element && Math.abs(element.getBoundingClientRect().left - expected[0]) > 1) issues.push(selector)
+        }
+        const card = document.querySelector('.hero-project-card')
+        if (card?.getClientRects().length && Math.abs(card.getBoundingClientRect().right - expected[1]) > 1) issues.push('.hero-project-card')
+        return issues
+      })
+      expect(marginIssues, `Shared page margins: ${route}`).toEqual([])
     }
     expect(errors).toEqual([])
   })

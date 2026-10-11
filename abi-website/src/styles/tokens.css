@@ -12,6 +12,7 @@
   --font-display: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
   --font-body: 'DM Sans', Arial, sans-serif;
   --page-max: 1280px;
+  --page-shell: calc(var(--page-max) + var(--gutter) * 2);
   --gutter: clamp(22px, 4.45vw, 64px);
   --ease: cubic-bezier(.22,1,.36,1);
 }

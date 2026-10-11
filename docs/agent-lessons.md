@@ -26,3 +26,10 @@
 - Remedy: shared bold condensed sans tokens and upright accents now cover every route, with local licensed font assets.
 - Prevention: test all rendered text for slanted styles and all headings for bold sans styling across six widths.
 - Scope/evidence: `src/styles/tokens.css`, `src/styles/global.css`, `tests/site.spec.js`; 14 local browser tests passed.
+
+## Share one outer content boundary across page templates
+- Trigger: user requested identical margins across the site.
+- Root cause: header, absolute hero labels, split CTA and reading pages used independent width/padding rules.
+- Remedy: shared page-shell token and containers now align these surfaces; article prose remains readable within the shared outer boundary.
+- Prevention: every-route browser checks compare left/right content edges and special hero/CTA/article elements against the footer at six widths.
+- Evidence: all 14 local browser tests passed, including 138 route/viewport margin checks; `src/styles/global.css`, `tests/site.spec.js`.
