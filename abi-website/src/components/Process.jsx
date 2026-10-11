@@ -1,32 +1,10 @@
-import { PROCESS_STEPS } from '../data/projects'
-
+import { SectionHeading } from './Primitives'
+const steps = [
+  ['Share your vision', 'Tell us about your business, your space, and what you want to achieve.'],
+  ['Shape the brief', 'Discuss design, scope, budget, and the practical needs of your project.'],
+  ['Build with purpose', 'Bring the agreed plans to life through coordinated construction and fit-out.'],
+  ['Make it yours', 'Review the completed space and prepare for the next chapter of your business.'],
+]
 export default function Process() {
-  return (
-    <section className="section cloud">
-      <div className="section-head">
-        <div>
-          <div className="eyebrow">How we build</div>
-        </div>
-        <div>
-          <h2>
-            Four phases
-            <br />
-            <span className="accent">end to end.</span>
-          </h2>
-          <p className="meta" style={{ marginTop: '24px' }}>
-            From feasibility to operations. One team, one accountable partner.
-          </p>
-        </div>
-      </div>
-      <div className="process">
-        {PROCESS_STEPS.map(s => (
-          <div key={s.n} className="step">
-            <div className="n">{s.n}</div>
-            <h4>{s.title}</h4>
-            <p>{s.body}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  )
+  return <section className="section process-section"><div className="container"><SectionHeading eyebrow="From idea to built space" title="Great spaces start with a conversation." /><ol className="process-grid">{steps.map(([title,body],i) => <li key={title}><span className="process-number">0{i+1}</span><div className="process-line" /><h3>{title}</h3><p>{body}</p></li>)}</ol></div></section>
 }

@@ -1,27 +1,33 @@
-import Services from '../components/Services'
+import { Button, Eyebrow, PageHero, Picture, SectionHeading } from '../components/Primitives'
 import Process from '../components/Process'
 import ContactCTA from '../components/ContactCTA'
+import { SERVICES } from '../data/content'
 
-export default function ServicesPage({ onContact, onNav }) {
+export default function ServicesPage() {
   return (
-    <div className="page-view" key="services">
-      <section className="about-hero">
-        <div>
-          <div className="eyebrow">Services</div>
-          <h1 style={{ marginTop: '24px' }}>
-            From concept to
-            <br />
-            <span className="accent">completion.</span>
-          </h1>
-        </div>
-        <div className="lede">
-          Six disciplines under one accountable team — covering Civil, Structural, MEPF, fit-out,
-          joinery, smart-building integration, and pre-construction advisory.
+    <>
+      <PageHero eyebrow="Our expertise" title={<>From vision<br />to built reality.</>} description="Construction, interiors, and technology. Explore the services that bring your project together." image={SERVICES[0].image} alt={SERVICES[0].title} breadcrumb={[{ label: 'Services' }]} />
+      <section className="section">
+        <div className="container">
+          <SectionHeading eyebrow="What we do" title="Expertise at every stage." description="Choose a service to explore its scope and start a conversation about your requirements." />
+          <div className="service-list">
+            {SERVICES.map((service, index) => (
+              <article className={`service-row ${index % 2 ? 'reverse' : ''}`} key={service.slug}>
+                <Picture src={service.image} alt={service.title} />
+                <div className="prose">
+                  <Eyebrow>{String(index + 1).padStart(2, '0')} / Our services</Eyebrow>
+                  <h2>{service.title}</h2>
+                  <p>{service.description}</p>
+                  <ul className="capabilities">{service.capabilities.slice(0, 3).map((item) => <li key={item}>{item}</li>)}</ul>
+                  <Button href={`/services/${service.slug}`} variant="outline">Explore service</Button>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
-      <Services onContact={onContact} onNav={onNav} />
       <Process />
-      <ContactCTA onContact={onContact} onProjects={() => null} />
-    </div>
+      <ContactCTA />
+    </>
   )
 }

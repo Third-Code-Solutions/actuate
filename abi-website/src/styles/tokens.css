@@ -1,116 +1,17 @@
 :root {
-  /* ─── Neutrals: Light ─────────────────────────────────────── */
   --white: #FFFFFF;
-  --bone: #FFFFFF;
   --cloud: #F4F5F7;
-  --bone-soft: #FAFAFB;
-  --plaster: #F4F5F7;
-  --plaster-2: #E8EAEE;
-  --mist: #DFE3E8;
-
-  /* ─── Neutrals: Dark ──────────────────────────────────────── */
-  --ink: #0E1116;
-  --graphite: #0E1116;
-  --graphite-90: rgba(14, 17, 22, 0.90);
-  --graphite-60: rgba(14, 17, 22, 0.60);
-  --graphite-30: rgba(14, 17, 22, 0.30);
-  --graphite-12: rgba(14, 17, 22, 0.12);
-  --graphite-06: rgba(14, 17, 22, 0.06);
-
-  --steel: #4A5560;
-  --concrete: #8A95A2;
-
-  /* ─── Brand Slate ─────────────────────────────────────────── */
-  --slate: #1F2937;
-  --slate-2: #2D3949;
-  --slate-3: #131A24;
-
-  /* ─── Brand Green ─────────────────────────────────────────── */
   --green: #145F40;
   --green-2: #1B7551;
   --green-3: #0B4630;
-  --green-soft: rgba(20, 95, 64, 0.10);
-
-  /* ─── Brand Aliases (legacy + abi-prefixed) ────────────────── */
-  --abi-slate:   #1F2937;
-  --abi-slate-2: #2D3949;
-  --abi-slate-3: #131A24;
-  --abi-green:   #145F40;
-  --abi-green-2: #1B7551;
-  --abi-green-3: #0B4630;
-  --abi-green-soft: rgba(20,95,64,0.10);
-  --abi-navy:    #1F2937;
-  --abi-navy-2:  #2D3949;
-  --abi-navy-3:  #131A24;
-  --abi-red:     #145F40;
-  --abi-red-2:   #1B7551;
-  --abi-red-3:   #0B4630;
-  --sienna:      #145F40;
-  --sienna-soft: #1B7551;
-  --sienna-deep: #0B4630;
-  --steel-blue:  #1F2937;
-
-  /* ─── Semantic / Status ───────────────────────────────────── */
-  --moss: #1F7A3A;
-  --amber: #E0A93B;
-  --crimson: #C42032;
-
-  /* ─── On-dark surface tokens ──────────────────────────────── */
-  --bone-on-graphite: #F5F6F8;
-  --concrete-on-graphite: #8893A2;
-
-  /* ─── Typography: Families ────────────────────────────────── */
-  --font-display: 'Geist', 'Söhne', system-ui, -apple-system, sans-serif;
-  --font-body: 'Geist', 'Söhne', system-ui, -apple-system, sans-serif;
-  --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
-
-  /* ─── Typography: Scale ───────────────────────────────────── */
-  --fs-eyebrow: 12px;
-  --fs-small: 14px;
-  --fs-body: 17px;
-  --fs-lede: 22px;
-  --fs-h3: 32px;
-  --fs-h2: clamp(40px, 4.5vw, 72px);
-  --fs-h1: clamp(56px, 7vw, 112px);
-  --fs-mega: clamp(96px, 14vw, 240px);
-
-  /* ─── Spacing Scale ───────────────────────────────────────── */
-  --s-1: 4px;
-  --s-2: 8px;
-  --s-3: 12px;
-  --s-4: 16px;
-  --s-5: 24px;
-  --s-6: 32px;
-  --s-7: 48px;
-  --s-8: 64px;
-  --s-9: 96px;
-  --s-10: 128px;
-  --s-11: 160px;
-
-  /* ─── Layout ──────────────────────────────────────────────── */
-  --page-max: 1440px;
-  --gutter: 32px;
-  --margin-d: 96px;
-  --margin-m: 24px;
-  --page-px: 88px;
-
-  /* ─── Motion ──────────────────────────────────────────────── */
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-in: cubic-bezier(0.5, 0, 0.75, 0);
-  --dur-fast: 180ms;
-  --dur: 280ms;
-  --dur-slow: 600ms;
-  --dur-xslow: 900ms;
-
-  /* ─── Borders ─────────────────────────────────────────────── */
-  --hairline: 1px solid var(--graphite-12);
-  --hairline-strong: 1px solid var(--graphite-30);
-
-  /* ─── Radii ───────────────────────────────────────────────── */
-  --r-0: 0;
-  --r-pill: 999px;
+  --slate: #1F2937;
+  --ink: #0E1116;
+  --steel: #4A5560;
+  --line: #DFE3E8;
+  --on-dark: #D8DDE2;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', Arial, sans-serif;
+  --page-max: 1280px;
+  --gutter: clamp(22px, 4.45vw, 64px);
+  --ease: cubic-bezier(.22,1,.36,1);
 }
-
-/* ─── Responsive page padding ────────────────────────────────── */
-@media (max-width: 1100px) { :root { --page-px: 48px; } }
-@media (max-width: 700px)  { :root { --page-px: 22px; } }

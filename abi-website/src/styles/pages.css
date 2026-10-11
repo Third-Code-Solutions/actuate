@@ -1,7 +1,0 @@
-/* ════════════════════════════════════════════════════════════════
-   PAGES — Sub-aggregator: service, blog, careers + footer
-   ════════════════════════════════════════════════════════════════ */
-
-@import './pages-service.css';
-@import './pages-blog.css';
-@import './pages-careers.css';
