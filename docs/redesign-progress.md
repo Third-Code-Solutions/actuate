@@ -34,4 +34,4 @@ Port the authorized construction-website design to the existing React/Vite app; 
 - Replaced Playfair with locally served Barlow Condensed 700/800 and DM Sans; retained font licenses. Upright uppercase display headings, stronger controls, readable body/forms/footer, responsive spacing.
 - Hero uses normal flow with reserved project-label space; short landscape menu scrolls. Small-screen cards, process steps, forms and article titles adapt to available width.
 - Local lint/build and 14 browser tests pass: all 23 routes at 320, 390, 768, 1024, 1440, 1920px; no overflow, italic text or runtime errors; media, core flows, landscape and five-page automated accessibility checks pass.
-- Current branch: codex/actuate-bold-responsive-polish. Review and hosted preview/production checks pending.
+- Current branch: codex/actuate-bold-responsive-polish. Independent review approved; preview and public production each passed the complete 14-test suite. PR #2 merged; production source bbdd941. No remaining blocker.

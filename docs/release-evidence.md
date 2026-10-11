@@ -76,3 +76,26 @@ Existing deployment protection: SSO enabled for `all_except_custom_domains`; pas
 Local screenshots are preserved under `.playwright-mcp/release/`: `production-desktop.png`, `production-mobile.png`, and corresponding `-full.png` full-page captures; preview full-page captures also retained.
 
 No deployment blockers remain. Contact is intentionally an explicit email handoff because no backend integration is configured. Hero uses verified Etiqa photography; no usable genuine video was accessible. Media provenance is in `docs/content-sources.md` and `public/media/manifest.json`.
+
+## Bold typography and responsive polish release — 2026-10-11
+
+- Request: aggressive upright typography, no cursive/italic styling, polish every page and section for responsive use.
+- Implementation: `37ea42ccca30f573770b6838d52d3bd909e990aa`, branch `codex/actuate-bold-responsive-polish`.
+- PR: https://github.com/Third-Code-Solutions/actuate/pull/2 — merged.
+- Production source: `bbdd941f92c34a7a46f12c5ab1c2dd41bbd0a077`; application tree matches preview implementation.
+- Preview: https://actuate-anmtn0get-pavi-2e9809a4.vercel.app — `dpl_9tj7akHvUMCYiLMtavQZnDgVR6w5`, READY. Verified with supported temporary share access; protection unchanged.
+- Production: https://actuate-beta.vercel.app — `dpl_6vmzYkR5afmyQqdLJBZEvbT4fzpr`, READY, production target; alias assigned without error.
+- Immutable production: https://actuate-oczf820td-pavi-2e9809a4.vercel.app.
+- Both deployments use existing Actuate project/team and Git source ID recorded above. No automatic deployment observed for either exact SHA before explicit deployment.
+
+### Changes and evidence
+- Barlow Condensed 700/800 headings replace serif/italic styling. DM Sans remains body type. All three licensed WOFF2 files now served locally, loaded on both preview and production; no runtime Google Fonts dependency. Privacy copy updated accordingly.
+- Stronger heading hierarchy, square navigation controls, readable footer/link labels, 16px form controls, refined mobile cards/process/spacing. Hero content flows in normal layout with reserved space for project details; landscape menu remains scrollable.
+- Lint/build pass. Local suite 14/14; protected preview 14/14; public production 14/14 (1.9 minutes), without authentication state.
+- Each suite checks 23 routes at 320, 390, 768, 1024, 1440 and 1920px: 138 route/viewport combinations. No horizontal overflow, italic/oblique text, weak/serif headings, missing images or runtime page errors.
+- Existing routing/history/alias/hash, service tabs, gallery, mobile menu, email draft and reduced-motion checks pass. Short landscape checks at 844×390 and 667×375 pass. Five representative automated WCAG AA audits pass; not full accessibility certification.
+- Independent reviewer approved and checked eight breakpoint edges (381–1101px) without overflow or header collisions.
+- Manual visual review covered home sections, inner heroes, service content, project listings, articles, careers and mobile contact form. Mobile draft preparation at 320px also fits without overflow; no message sent.
+- Public JS `index-CzehD-Xn.js`, CSS `index-DskKMMdy.css`, and all three font files match local build byte-for-byte.
+- Final screenshots: `.playwright-mcp/release/bold-production-desktop.png` (1440×1000), `.playwright-mcp/release/bold-production-mobile.png` (390×844). Additional local section screenshots use `.playwright-mcp/bold-*-viewport.png`.
+- Temporary preview authentication state removed after verification. No remaining release blockers. Existing contact email handoff and authentic photographic hero unchanged.
