@@ -44,4 +44,4 @@ Port the authorized construction-website design to the existing React/Vite app; 
 ## Restore pill navbar — 2026-10-11
 - Restored original rounded navbar, active links and header CTA with original spacing.
 - Local lint/build and three navigation/landscape tests pass. Browser header checks pass at seven widths, 320–1920px. Review approved.
-- Preview/production release pending on codex/actuate-restore-pill-navbar.
+- PR #4 merged; preview and production READY. Three targeted navigation tests pass locally, on preview and on public production. Production source bb12642.

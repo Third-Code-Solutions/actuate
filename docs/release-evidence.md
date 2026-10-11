@@ -111,3 +111,11 @@ No deployment blockers remain. Contact is intentionally an explicit email handof
 - Public desktop inspection at 1440px: header, hero and footer content boundaries are x=80 and x=1360. Mobile CTA content/image align at x=22 and x=368 on 390px viewport.
 - Production JS `index-Cot2EXA-.js` and CSS `index-DJePhAfB.css` match local build byte-for-byte.
 - Screenshots: `.playwright-mcp/release/margins-production-desktop.png`, `.playwright-mcp/margins-cta.png`, `.playwright-mcp/margins-cta-mobile.png`, `.playwright-mcp/margins-article.png`. No remaining release blockers.
+
+## Restored pill navbar — 2026-10-11
+- Implementation `d676203568a5f33be7f04a6a062a7ee36c0dfcae`; PR https://github.com/Third-Code-Solutions/actuate/pull/4 merged; production source `bb12642f650a954c4381dc868cfd5b5015eff8dc`.
+- Preview https://actuate-4835eaqgu-pavi-2e9809a4.vercel.app — `dpl_9JPwUAC1BBaTh5rFvfdEMHYqrLsr`, READY. Production https://actuate-beta.vercel.app — `dpl_5MB2DZmmLzMfN2wFnBcyBWGwMzKk`, READY with alias assigned. Existing Actuate project/team unchanged.
+- Four navbar CSS rules restored from b4d8347: pill shape, rounded active links, original spacing/toggle size and rounded header CTA. Shared margins and heading styles preserved.
+- Lint/build pass; independent review approved. Three targeted navigation/menu/landscape tests pass locally, on preview and public production (14.3 seconds). Full 14-test suite was not rerun for this shape/spacing-only restoration.
+- Header verified locally at 320,390,768,901,1024,1440,1920px: no overflow, margins align. Dropdown opens and Escape closes. Production confirms 40px nav/CTA radii and 30px link radii. Production CSS index-CSPrrXa2.css matches local build byte-for-byte.
+- Screenshot `.playwright-mcp/release/navbar-restored-production.png`. Temporary preview authentication files removed. No remaining blocker.
