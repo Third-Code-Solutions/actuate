@@ -1,6 +1,6 @@
 # Actuate release evidence
 
-Checked 2026-10-11 (Asia/Manila). This records observed state, not a claim that the redesign is deployed.
+Verified 2026-10-11 (Asia/Manila). The redesign is deployed and verified on production.
 
 ## Confirmed destination
 
@@ -46,4 +46,33 @@ Existing deployment protection: SSO enabled for `all_except_custom_domains`; pas
 
 ## Final release results
 
-Pending implementation and release verification. The production deployment listed above is the pre-redesign baseline.
+- Implementation branch: `codex/actuate-reference-redesign`.
+- Implementation commit: `b4d8347185527f06aee33a0c522b01b6da201897`.
+- PR: https://github.com/Third-Code-Solutions/actuate/pull/1 — merged.
+- Production source: `d3cd0e21252115f6ae5368e0e9affb10eca6e20b` on `main`. Application tree identical to verified preview commit.
+- Preview: https://actuate-efzhvd1gn-pavi-2e9809a4.vercel.app — `dpl_6pSXHq732nemhyemWwDPn25rh5GP`, `READY`. Verified using supported temporary Vercel share access; protection unchanged.
+- Production: https://actuate-beta.vercel.app — `dpl_5ikbfeKWtCE9Jzk6CEGjGU3783XZ`, `READY`, production target, aliases assigned with no alias error.
+- Immutable production deployment: https://actuate-dhg5cqome-pavi-2e9809a4.vercel.app.
+- Explicit existing-project settings applied: root `abi-website`, build `npm run build`, output `dist`, framework `vite`. Hosted build logs confirm clone of `Third-Code-Solutions/actuate` at the expected SHA and successful Vite output.
+- Git push did not produce an automatic deployment during observation. Both verified releases were created through the existing Vercel project's Git deployment API. Future webhook-driven automatic deployment was not established; repository clone/source association was verified.
+
+### Verification
+
+- `npm ci`, `npm run lint`, `npm run build`: passed.
+- Local browser suite: 10/10 passed.
+- Hosted preview: desktop test passed; a network interruption caused `ERR_INTERNET_DISCONNECTED` in remaining checks. Connectivity was re-established and affected route independently rendered correctly. All nine failed checks passed on rerun without assertion changes.
+- Public production: 10/10 tests passed in 56.2 seconds, without authentication cookies.
+- All 23 canonical pages loaded directly at 1440, 768, and 390px: one h1, page title, no horizontal overflow, all images loaded with alt attributes, no runtime page errors.
+- Verified browser back/forward, refresh, aliases, section links, all six service tabs and keyboard navigation, mobile menu/Escape/focus/scroll restoration, project gallery arrows/Escape/focus, reduced motion, and email draft validation/encoding.
+- Contact tests used `test@example.com`; no email app was launched and no inquiry sent. No non-GET request occurred during draft preparation.
+- Automated WCAG A/AA (WCAG 2 + 2.1 tags) passed on Home, service detail, project detail, Contact, and article detail. This is automated coverage, not a claim of full accessibility certification.
+- Production JS/CSS, Etiqa hero WebP, and favicon bytes match local build. Direct service and project routes return 200 HTML.
+- Code review: hash/Home navigation and mobile scroll-lock bugs fixed and regression tested; no remaining P1/P2 findings.
+- Production dependency audit: zero reported vulnerabilities. Existing development dependency audit reports eight findings; no runtime packages affected.
+- Reference clone remains clean; no reference source changes.
+
+### Screenshots and remaining limitations
+
+Local screenshots are preserved under `.playwright-mcp/release/`: `production-desktop.png`, `production-mobile.png`, and corresponding `-full.png` full-page captures; preview full-page captures also retained.
+
+No deployment blockers remain. Contact is intentionally an explicit email handoff because no backend integration is configured. Hero uses verified Etiqa photography; no usable genuine video was accessible. Media provenance is in `docs/content-sources.md` and `public/media/manifest.json`.

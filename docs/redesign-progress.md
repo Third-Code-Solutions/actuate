@@ -21,5 +21,10 @@ Port the authorized construction-website design to the existing React/Vite app; 
 - Lint/build pass; 10 Playwright tests pass, including all 23 canonical pages at 1440/768/390 widths, core interactions and WCAG AA checks on five representative routes.
 - Code review found two routing/menu issues; fixed and regression tested. No remaining P1/P2 findings.
 
-## Next
-Push branch, verify hosted preview, complete production release and capture final screenshots.
+## Completed release
+- PR #1 merged. Production source d3cd0e2; implementation b4d8347.
+- Existing Vercel project preview and production both READY and browser verified.
+- Public production suite: 10/10 passed; all 23 pages across three widths.
+- Screenshots saved under .playwright-mcp/release/.
+- No deployment blocker. Explicit email handoff and authentic image hero are documented limitations.
+- See docs/release-evidence.md for exact deployment IDs, evidence, and automatic-deployment observation.
