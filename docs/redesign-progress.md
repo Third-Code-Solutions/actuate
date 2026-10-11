@@ -35,3 +35,8 @@ Port the authorized construction-website design to the existing React/Vite app; 
 - Hero uses normal flow with reserved project-label space; short landscape menu scrolls. Small-screen cards, process steps, forms and article titles adapt to available width.
 - Local lint/build and 14 browser tests pass: all 23 routes at 320, 390, 768, 1024, 1440, 1920px; no overflow, italic text or runtime errors; media, core flows, landscape and five-page automated accessibility checks pass.
 - Current branch: codex/actuate-bold-responsive-polish. Independent review approved; preview and public production each passed the complete 14-test suite. PR #2 merged; production source bbdd941. No remaining blocker.
+
+## Consistent page margins — 2026-10-11
+- Shared responsive outer margins now cover header, hero labels, sections, CTA, articles, privacy and footer. Removed independent mobile gutter overrides.
+- Local lint/build and 14 browser tests passed, including exact margin alignment on 23 pages at six widths. Independent review approved.
+- Branch codex/actuate-consistent-margins; preview and production verification pending.
