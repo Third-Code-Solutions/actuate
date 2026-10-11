@@ -9,7 +9,7 @@
   --steel: #4A5560;
   --line: #DFE3E8;
   --on-dark: #D8DDE2;
-  --font-display: 'Playfair Display', Georgia, serif;
+  --font-display: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
   --font-body: 'DM Sans', Arial, sans-serif;
   --page-max: 1280px;
   --gutter: clamp(22px, 4.45vw, 64px);

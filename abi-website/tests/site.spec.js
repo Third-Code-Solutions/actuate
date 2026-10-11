@@ -3,8 +3,9 @@ import AxeBuilder from '@axe-core/playwright'
 import { SERVICES, PROJECTS, ARTICLES, COMPANY } from '../src/data/content.js'
 
 const routes = ['/', '/about', '/services', ...SERVICES.map(item => `/services/${item.slug}`), '/our-works', ...PROJECTS.map(item => `/our-works/${item.slug}`), '/blog', ...ARTICLES.map(item => `/blog/${item.slug}`), '/careers', '/contact', '/privacy']
-for (const width of [1440, 768, 390]) {
-  test(`every page loads with complete media at ${width}px`, async ({ page }) => {
+for (const width of [320, 390, 768, 1024, 1440, 1920]) {
+  test(`every page has responsive layout, upright bold headings and complete media at ${width}px`, async ({ page }) => {
+    test.setTimeout(120000)
     await page.setViewportSize({ width, height: 900 })
     const errors = []
     page.on('pageerror', error => errors.push(error.message))
@@ -15,10 +16,25 @@ for (const width of [1440, 768, 390]) {
       await expect(page).toHaveTitle(/Actuate Builders/)
       await page.evaluate(async () => {
         for (const image of document.images) image.loading = 'eager'
+        await document.fonts.ready
         await Promise.all([...document.images].map(image => image.decode().catch(() => {})))
       })
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), route).toBe(true)
       expect(await page.locator('img').evaluateAll(images => images.filter(image => !image.naturalWidth || !image.hasAttribute('alt')).map(image => image.src)), route).toEqual([])
+      const typographyIssues = await page.evaluate(() => {
+        const visible = element => element.getClientRects().length > 0 && getComputedStyle(element).visibility === 'visible'
+        const describe = element => `${element.tagName.toLowerCase()}: ${element.textContent.trim().slice(0, 100)}`
+        const slanted = [...document.body.querySelectorAll('*')].filter(element =>
+          visible(element) && [...element.childNodes].some(node => node.nodeType === Node.TEXT_NODE && node.textContent.trim()) &&
+          getComputedStyle(element).fontStyle !== 'normal'
+        ).map(describe)
+        const weakHeadings = [...document.querySelectorAll('h1, h2, h3, h4')].filter(element => {
+          const style = getComputedStyle(element)
+          return visible(element) && (Number(style.fontWeight) < 700 || !style.fontFamily.includes('sans-serif'))
+        }).map(describe)
+        return { slanted, weakHeadings }
+      })
+      expect(typographyIssues, route).toEqual({ slanted: [], weakHeadings: [] })
     }
     expect(errors).toEqual([])
   })
@@ -81,6 +97,33 @@ test('mobile menu closes, restores scroll, supports Escape and navigation', asyn
   expect(await page.evaluate(() => getComputedStyle(document.body).overflow)).not.toBe('hidden')
   await page.mouse.wheel(0, 500)
   await expect.poll(() => page.evaluate(() => scrollY)).toBeGreaterThan(0)
+})
+
+test('short landscape keeps hero labels separate and every mobile menu link reachable', async ({ page }) => {
+  for (const viewport of [{ width: 844, height: 390 }, { width: 667, height: 375 }]) {
+    await page.setViewportSize(viewport)
+    await page.goto('/')
+    await page.evaluate(() => document.fonts.ready)
+    const headline = await page.locator('.hero h1').boundingBox()
+    for (const selector of ['.hero-project', '.hero-project-card', '.site-header']) {
+      const element = page.locator(selector)
+      if (!await element.isVisible()) continue
+      const box = await element.boundingBox()
+      const overlaps = headline.x < box.x + box.width && headline.x + headline.width > box.x &&
+        headline.y < box.y + box.height && headline.y + headline.height > box.y
+      expect(overlaps, `${selector} overlaps headline at ${viewport.width}×${viewport.height}`).toBe(false)
+    }
+    await page.getByRole('button', { name: 'Open menu' }).click()
+    const dialog = page.getByRole('dialog', { name: 'Main navigation menu' })
+    const contact = dialog.getByRole('link', { name: 'Contact', exact: false })
+    await dialog.hover()
+    await page.mouse.wheel(0, 2000)
+    await expect(contact).toBeInViewport({ ratio: 1 })
+    await contact.click()
+    await expect(page).toHaveURL(/\/contact$/)
+    await expect(dialog).not.toBeVisible()
+    expect(await page.evaluate(() => getComputedStyle(document.body).overflow)).not.toBe('hidden')
+  }
 })
 
 test('gallery opens, keyboard advances, Escape restores trigger focus', async ({ page }) => {

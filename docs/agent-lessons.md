@@ -19,3 +19,10 @@
 - Root cause: inline body overflow was cleared only by the close event.
 - Remedy: CSS `body:has(dialog[open])` derives scroll lock directly; regression test covers close, Escape, route navigation and restored scrolling.
 - Scope/evidence: `src/components/Nav.jsx`, `src/styles/global.css`, `tests/site.spec.js`.
+
+## Match display typography to the explicit brand direction
+- Trigger: user rejected the redesign's italic/serif headings and requested an aggressive upright style.
+- Root cause: reference typography was carried over without matching the user's latest visual direction.
+- Remedy: shared bold condensed sans tokens and upright accents now cover every route, with local licensed font assets.
+- Prevention: test all rendered text for slanted styles and all headings for bold sans styling across six widths.
+- Scope/evidence: `src/styles/tokens.css`, `src/styles/global.css`, `tests/site.spec.js`; 14 local browser tests passed.
