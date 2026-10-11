@@ -79,17 +79,17 @@ main:focus { outline: none; }
 .header-inner { height: 100%; max-width: var(--page-shell); margin: auto; padding-inline: var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .logo { display: inline-flex; background: white; padding: 11px 14px; flex-shrink: 0; }
 .logo img { object-fit: contain; width: 180px; height: 30px; }
-.desktop-nav { display: flex; align-items: center; padding: 6px; border-radius: 3px; background: #ffffff0d; border: 1px solid #ffffff29; backdrop-filter: blur(16px); }
-.desktop-nav > a,.nav-group > a { padding: 10px 16px; font-size: 12px; font-weight: 600; border-radius: 2px; display: block; }
+.desktop-nav { display: flex; align-items: center; padding: 6px; border-radius: 40px; background: #ffffff0d; border: 1px solid #ffffff29; backdrop-filter: blur(16px); }
+.desktop-nav > a,.nav-group > a { padding: 8px 16px; font-size: 12px; border-radius: 30px; display: block; }
 .desktop-nav a[aria-current='page'] { background: #ffffff19; }
 .desktop-nav > a:hover,.nav-group > a:hover { background: #ffffff13; }
 .nav-group { display: flex; align-items: center; position: relative; }
 .nav-group > a { padding-right: 4px; }
-.submenu-toggle { border: 0; background: none; width: 40px; height: 44px; display: grid; place-items: center; }
+.submenu-toggle { border: 0; background: none; width: 30px; height: 36px; display: grid; place-items: center; }
 .nav-dropdown { position: absolute; top: calc(100% + 14px); left: 0; width: 290px; background: var(--slate); padding: 14px; border: 1px solid #ffffff22; box-shadow: 0 15px 40px #0003; }
 .nav-dropdown > a { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13px; padding: 12px; }
 .nav-dropdown > a:hover { background: var(--green); }
-.header-cta { display: flex; align-items: center; gap: 18px; padding: 11px 22px; border: 1px solid #ffffff55; border-radius: 3px; font-size: 12px; background: #ffffff0d; }
+.header-cta { display: flex; align-items: center; gap: 18px; padding: 11px 22px; border: 1px solid #ffffff55; border-radius: 40px; font-size: 12px; background: #ffffff0d; }
 .header-cta:hover { background: var(--green); }
 .menu-toggle { display: none; background: none; border: 1px solid #ffffff55; width: 44px; height: 44px; align-items: center; justify-content: center; }
 .mobile-menu { position: fixed; inset: 0; margin: 0; width: 100%; max-width: none; height: 100dvh; max-height: none; border: 0; background: var(--ink); color: white; padding: 24px var(--gutter); overflow-y: auto; overscroll-behavior: contain; }
