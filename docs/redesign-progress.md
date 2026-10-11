@@ -39,4 +39,9 @@ Port the authorized construction-website design to the existing React/Vite app; 
 ## Consistent page margins — 2026-10-11
 - Shared responsive outer margins now cover header, hero labels, sections, CTA, articles, privacy and footer. Removed independent mobile gutter overrides.
 - Local lint/build and 14 browser tests passed, including exact margin alignment on 23 pages at six widths. Independent review approved.
-- Branch codex/actuate-consistent-margins; preview and production verification pending.
+- Branch codex/actuate-consistent-margins; PR #3 merged. Preview and public production each passed 14/14 browser tests, including every-page margin checks. Production source 9c25a97.
+
+## Restore pill navbar — 2026-10-11
+- Restored original rounded navbar, active links and header CTA with original spacing.
+- Local lint/build and three navigation/landscape tests pass. Browser header checks pass at seven widths, 320–1920px. Review approved.
+- Preview/production release pending on codex/actuate-restore-pill-navbar.

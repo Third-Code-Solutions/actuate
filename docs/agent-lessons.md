@@ -33,3 +33,10 @@
 - Remedy: shared page-shell token and containers now align these surfaces; article prose remains readable within the shared outer boundary.
 - Prevention: every-route browser checks compare left/right content edges and special hero/CTA/article elements against the footer at six widths.
 - Evidence: all 14 local browser tests passed, including 138 route/viewport margin checks; `src/styles/global.css`, `tests/site.spec.js`.
+
+## Keep navbar shape independent from heading typography
+- Trigger: user asked to bring back the original navbar after typography and margin updates.
+- Root cause: the bold typography pass also squared navbar controls, exceeding the requested font change.
+- Remedy: restored original pill navigation, active link shape, link spacing and rounded header CTA from b4d8347.
+- Prevention: scope typography changes to type unless the user also requests control-shape changes.
+- Evidence: four CSS declarations restored; lint/build and three navigation browser tests pass; seven responsive header widths retain shared margins without overflow.
