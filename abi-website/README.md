@@ -1,16 +1,26 @@
-# React + Vite
+# Actuate Builders website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React 19, Vite, JSX, and CSS. The redesign adapts the owner's construction-website reference while retaining Actuate branding and verified content.
 
-Currently, two official plugins are available:
+## Local development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+From `abi-website/`, run `npm ci`, then `npm run dev`.
 
-## React Compiler
+Validation: `npm run lint`, `npm run build`, then `npm run preview -- --port 5173` and `npm run test:e2e` in a separate terminal. Browser tests use installed Google Chrome. Set `BASE_URL` to test another environment. Tests never send an enquiry.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Content and routing
 
-## Expanding the ESLint configuration
+- `src/data/content.js`: verified company, service, project, and article content.
+- `public/media/manifest.json`: optimized photograph provenance.
+- `src/styles/tokens.css`: brand colors and shared tokens.
+- `src/styles/global.css`: shared responsive layout and component styling.
+- `src/App.jsx` and `src/router.js`: shareable paths, browser history, metadata, aliases, and not-found screen.
+- `vercel.json`: Vite build settings and SPA route rewrites.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The contact form prepares a client-side email draft. It does not send, queue, persist, or submit messages. The user explicitly opens their email client and sends there. No form backend is configured.
+
+The hero uses actual Etiqa office photography. No verified usable company video was accessible; see `../docs/content-sources.md`.
+
+## Deployment
+
+Use the existing Vercel project `actuate` in team `pavi-2e9809a4`, application root `abi-website`, build `npm run build`, output `dist`. Do not create a duplicate project. See `../docs/release-evidence.md` for identifiers, repository transfer verification, release evidence, and limitations.

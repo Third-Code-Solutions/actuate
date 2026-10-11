@@ -1,53 +1,7 @@
-import ScrollReveal from './ScrollReveal'
-import ScaleOnScroll from './ScaleOnScroll'
-import TextReveal from './TextReveal'
-import { PROJECTS } from '../data/projects'
-
-export default function Projects() {
-  return (
-    <section className="projects-v2">
-      <div className="projects-v2-rail">
-        <span>05 / 08</span>
-        <span className="line" />
-        <span>Selected works</span>
-      </div>
-      <div className="projects-v2-head">
-        <ScrollReveal variant="blur">
-          <div className="hd-eyebrow">Index</div>
-        </ScrollReveal>
-        <TextReveal as="h2" className="hd-h" staggerMs={100}>
-          {'More from the\n'}
-          <span className="ital">project archive.</span>
-        </TextReveal>
-      </div>
-      <div className="projects-v2-grid">
-        {PROJECTS.map((p, i) => (
-          <ScrollReveal key={p.id} delay={i * 80}>
-            <a className="project-card card-hover-lift">
-              <div className="project-card-img img-hover-zoom img-hover-shine">
-                <ScaleOnScroll src={p.img} alt={p.name} aspectRatio="5/4" className="fill" />
-              </div>
-              <div className="project-card-meta">
-                <div className="meta-top">
-                  <span className="num">{p.num}</span>
-                  <span className="tag">{p.tag}</span>
-                </div>
-                <div className="project-card-name">{p.name}</div>
-                <div className="meta-bottom">
-                  <span>{p.gfa}</span>
-                  <span className="sep">·</span>
-                  <span>{p.sector}</span>
-                </div>
-              </div>
-            </a>
-          </ScrollReveal>
-        ))}
-      </div>
-      <div className="projects-v2-foot">
-        <a className="all-works">
-          View all 38 projects<span className="ar" />
-        </a>
-      </div>
-    </section>
-  )
+import { ArrowUpRight } from 'lucide-react'
+import { PROJECTS } from '../data/content'
+import Link from './Link'
+import { Picture, SectionHeading } from './Primitives'
+export default function Projects({ exclude }) {
+  return <section className="section projects-section dark"><div className="container"><div className="section-top"><SectionHeading eyebrow="Our work" title={exclude ? 'More spaces. More possibilities.' : 'Purpose, made tangible.'} description="A closer look at the spaces we’ve brought to life." /><Link className="text-link" href="/our-works">View all projects <ArrowUpRight size={18} /></Link></div><div className="project-grid">{PROJECTS.filter(project => project.slug !== exclude).map((project,i) => <Link href={`/our-works/${project.slug}`} className="project-card" key={project.slug}><div className="project-card-image"><Picture src={project.image} alt={`${project.name} office fit-out by Actuate Builders`} /><span className="project-index">0{i+1}</span><span className="round-link"><ArrowUpRight /></span></div><p className="small-label">{project.category} · {project.location}</p><h3>{project.name}</h3></Link>)}</div></div></section>
 }

@@ -1,70 +1,37 @@
-import ParallaxBand from '../components/ParallaxBand'
-import StatsRow from '../components/StatsRow'
+import { Button, Eyebrow, PageHero, Picture, SectionHeading } from '../components/Primitives'
+import Projects from '../components/Projects'
 import ContactCTA from '../components/ContactCTA'
+import { ABOUT_IMAGES } from '../data/content'
 
-export default function AboutPage({ onContact }) {
+const values = [
+  { title: 'Agile', body: 'A responsive approach to the changing needs of construction, technology, and the people who use our spaces.' },
+  { title: 'Bold', body: 'The ambition to take on meaningful work and help build a world-class Philippines.' },
+  { title: 'Innovative', body: 'Bringing construction and property technology together to create spaces for the way we work today.' },
+]
+
+export default function AboutPage() {
   return (
-    <div className="page-view" key="about">
-      <section className="about-hero">
-        <div>
-          <div className="eyebrow">About ABI</div>
-          <h1 style={{ marginTop: '24px' }}>
-            We are a team united by
-            <br />
-            a big <span className="accent">mission.</span>
-          </h1>
-        </div>
-        <div className="lede">
-          Founded in 2010, Actuate Builders Inc. (ABI) began as a specialist in interior fit-out
-          works for BPO companies — quickly earning a reputation for quality, timeliness, and
-          cost-effectiveness. By 2012, ABI expanded into a full-service general contractor,
-          recognized as a Triple-A company by the Philippine Contractors Association Board (PCAB).
+    <>
+      <PageHero eyebrow="About Actuate" title={<>Built on purpose.<br />Driven by people.</>} description="Actuate Builders Inc. brings construction, interiors, and property technology together in the Philippines." image={ABOUT_IMAGES[0].src} alt={ABOUT_IMAGES[0].alt} breadcrumb={[{ label: 'About' }]} />
+      <section className="section">
+        <div className="container">
+          <SectionHeading eyebrow="Our principles" title="What drives every build." description="Agile. Bold. Innovative. The values behind Actuate's name and approach." />
+          <div className="values-grid">{values.map((value, index) => <article className="value-card" key={value.title}><Eyebrow>{String(index + 1).padStart(2, '0')}</Eyebrow><h3>{value.title}</h3><p>{value.body}</p></article>)}</div>
         </div>
       </section>
-      <ParallaxBand
-        src="/img/MPH-IMG_4980.jpg"
-        alt="ABI craftsmanship"
-        eyebrow="Brand strategy"
-        headline="An F1-team mindset<br/><span class='accent'>applied to building.</span>"
-      />
-      <section className="section cloud">
-        <div className="section-head">
-          <div className="eyebrow">Values</div>
-          <h2>
-            Bold, agile,
-            <br />
-            <span className="accent">precise.</span>
-          </h2>
-          <p className="meta">
-            Our brand and culture were shaped by an F1-team mindset. Goal-driven, united, competent,
-            dynamic, top-notch, timeless.
-          </p>
-        </div>
-        <div className="services">
-          <div className="service">
-            <div className="num">VALUE / 01</div>
-            <h3>Boldness</h3>
-            <p>
-              We commit to the project, the team, and the standard — even when the easy path runs
-              through compromise.
-            </p>
-          </div>
-          <div className="service">
-            <div className="num">VALUE / 02</div>
-            <h3>Innovation</h3>
-            <p>
-              From PropTech to materials engineering, we choose the better way over the familiar one.
-            </p>
-          </div>
-          <div className="service">
-            <div className="num">VALUE / 03</div>
-            <h3>Agility</h3>
-            <p>Construction has a thousand moving parts. We adjust without losing the line.</p>
+      <section className="section dark">
+        <div className="container split">
+          <div className="about-images">{ABOUT_IMAGES.slice(0, 2).map((image) => <Picture key={image.src} src={image.src} alt={image.alt} />)}</div>
+          <div className="prose">
+            <SectionHeading eyebrow="Our story" title={<>From interiors<br />to possibilities.</>} />
+            <p>Founded in 2010, ABI began with interior fit-outs for BPO companies. By 2012, the business had expanded into a full-service general contractor.</p>
+            <p>Today, Actuate brings structural work, building systems, joinery, and property technology together. Our work spans construction and the spaces people use every day.</p>
+            <Button href="/services" variant="outline-light">Discover our expertise</Button>
           </div>
         </div>
       </section>
-      <StatsRow />
-      <ContactCTA onContact={onContact} onProjects={() => null} />
-    </div>
+      <Projects />
+      <ContactCTA />
+    </>
   )
 }
