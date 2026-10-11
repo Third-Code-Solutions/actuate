@@ -99,3 +99,15 @@ No deployment blockers remain. Contact is intentionally an explicit email handof
 - Public JS `index-CzehD-Xn.js`, CSS `index-DskKMMdy.css`, and all three font files match local build byte-for-byte.
 - Final screenshots: `.playwright-mcp/release/bold-production-desktop.png` (1440×1000), `.playwright-mcp/release/bold-production-mobile.png` (390×844). Additional local section screenshots use `.playwright-mcp/bold-*-viewport.png`.
 - Temporary preview authentication state removed after verification. No remaining release blockers. Existing contact email handoff and authentic photographic hero unchanged.
+
+## Consistent margins release — 2026-10-11
+- Implementation `c1677fa26182951961eaa59e98f78f0f7a395f4a`; PR https://github.com/Third-Code-Solutions/actuate/pull/3 merged. Production source `9c25a97cbc587b27b2f2b288ac00ad32183718e6`.
+- Preview https://actuate-b262650ac-pavi-2e9809a4.vercel.app — `dpl_HK3uHg7DCvEUDinJgkvSG5EsXAFV`, READY.
+- Production https://actuate-beta.vercel.app — `dpl_2ZfjZdMDLQ5ribPMoa7HpPTGFeua`, READY with alias assigned. Immutable URL https://actuate-lqj09w3mi-pavi-2e9809a4.vercel.app.
+- Existing Actuate project/team unchanged. Preview access used temporary supported sharing; temporary browser state removed.
+- Shared page-shell width and responsive gutters align header, hero labels, sections, CTA, article and privacy content, footer. Article paragraphs retain readable line lengths inside the shared outer boundary.
+- Lint/build pass; independent review approved. Local, preview and public production each passed 14/14 browser tests. Production run: 1.7 minutes.
+- Margin assertions cover all 23 routes at six widths (138 combinations), including container left/right edges and formerly inconsistent hero/CTA/article elements. Existing overflow, typography, media, navigation, gallery, form, landscape, reduced-motion and automated accessibility checks remain passing.
+- Public desktop inspection at 1440px: header, hero and footer content boundaries are x=80 and x=1360. Mobile CTA content/image align at x=22 and x=368 on 390px viewport.
+- Production JS `index-Cot2EXA-.js` and CSS `index-DJePhAfB.css` match local build byte-for-byte.
+- Screenshots: `.playwright-mcp/release/margins-production-desktop.png`, `.playwright-mcp/margins-cta.png`, `.playwright-mcp/margins-cta-mobile.png`, `.playwright-mcp/margins-article.png`. No remaining release blockers.
